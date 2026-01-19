@@ -75,10 +75,3 @@ From the following figure **Normalized Recovery by Layer**, we provide the follo
 The causal reasoning circuit lives primarily in layers 8–10. 
 
 ---
-.
-├── AI_Interpretability.ipynb     # Main experiment notebook
-├── ai_interpretability.py       # Script version of core logic
-├── requirements.txt             # Python dependencies
-├── LICENSE
-└── README.md
-
