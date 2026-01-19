@@ -75,3 +75,13 @@ From the following figure **Normalized Recovery by Layer**, we provide the follo
 The causal reasoning circuit lives primarily in layers 8–10. 
 
 ---
+
+## Research Themes
+
+--- Mechanistic interpretability
+
+--- Causal analysis of transformers
+
+--- Neural circuit discovery
+
+--- Alignment & transparency
