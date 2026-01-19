@@ -1,6 +1,50 @@
 # Mechanistic Artificial Intelligence Interpretability
 
-In the following result — we are looking at a real mechanistic interpretability localization experiment. In this experiment (attached code) we run an activation patching on the residual stream (resid_post) at the final token. In practice, we created a clean prompt (correct names), then a corrupted prompt in the form of swapped names, followed by measuring a decision metric (which name is preferred). Lastly, we then ran the corrupted prompt, patched in internal activations from the clean run at one layer and measured whether the model’s decision recovered.
+This repository contains a mechanistic interpretability study of transformer models using causal activation patching and circuit localization. The project applies intervention-based methods to reverse-engineer how GPT-style transformers perform relational reasoning tasks.
+
+The core goal is to treat neural networks as computational systems and uncover the internal mechanisms and information flow that give rise to reasoning behavior.
+
+---
+
+## 🔬 Project Overview
+
+This project implements a full causal interpretability pipeline using TransformerLens:
+
+- Construction of clean and corrupted reasoning prompts  
+- Definition of a causal decision metric  
+- Residual stream activation patching across layers  
+- Localization of reasoning circuits  
+- Attention head analysis and information flow visualization  
+
+The primary experiment studies indirect-object reasoning (e.g., "A gave the book to B. Therefore, ___") and identifies which transformer layers causally implement the relational inference.
+
+Rather than relying on correlation analysis, this work uses causal interventions to localize the computation responsible for model decisions.
+
+---
+
+## 🧠 Key Results
+
+Using activation patching on GPT-2-small:
+
+- Localized the reasoning circuit to mid-to-late transformer layers (layers 8–10)
+- Demonstrated causal dependence of output behavior on internal residual stream representations
+- Identified the layer region where relational information is stored and transformed
+- Produced layer-wise recovery curves and attention heatmaps
+
+These results replicate known transformer reasoning phenomena and demonstrate a complete mechanistic analysis workflow.
+
+---
+
+## 📊 Methods
+
+- TransformerLens (HookedTransformer)
+- Residual stream activation patching
+- Causal intervention on internal activations
+- Layer-wise circuit localization
+- Attention head inspection and visualization
+- Decision-metric based evaluation
+
+-- -- --
 
 In the following figure, on x-axis we have Tranformer Layers index from 0-11 and y-axis plot the decision metric. We clearly see the dashed line value and solid line in the figure. More interpretation details are as follows:
 | Layer Index | Interpretation |
@@ -29,4 +73,12 @@ From the following figure **Normalized Recovery by Layer**, we provide the follo
 <img width="1373" height="779" alt="Unknown-5" src="https://github.com/user-attachments/assets/52389490-8a25-4f70-81a0-ae406e07d17b" />
 
 The causal reasoning circuit lives primarily in layers 8–10. 
+
+---
+.
+├── AI_Interpretability.ipynb     # Main experiment notebook
+├── ai_interpretability.py       # Script version of core logic
+├── requirements.txt             # Python dependencies
+├── LICENSE
+└── README.md
 
